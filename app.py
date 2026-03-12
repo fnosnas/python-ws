@@ -17,8 +17,8 @@ from aiohttp import web
 # 环境变量
 UUID = os.environ.get('UUID', '7bd180e8-1142-4387-93f5-03e8d750a896')   # 节点UUID
 # Komari 配置变量 [cite: 1, 2]
-KOMARI_URL = os.environ.get('KOMARI_URL', 'https://komari.afnos86.xx.kg') 
-KOMARI_TOKEN = os.environ.get('KOMARI_TOKEN', '6SNUFebX7bG8I8Vuv9GdYd')
+KOMARI_URL = os.environ.get('KOMARI_URL', '') 
+KOMARI_TOKEN = os.environ.get('KOMARI_TOKEN', '')
 DOMAIN = os.environ.get('DOMAIN', '')                # 项目分配的域名或反代后的域名 [cite: 1]
 SUB_PATH = os.environ.get('SUB_PATH', 'sub')         # 节点订阅token [cite: 1, 2]
 NAME = os.environ.get('NAME', '')                    # 节点名称 [cite: 2]
