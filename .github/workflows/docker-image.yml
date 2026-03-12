@@ -1,4 +1,4 @@
-name: Build and Push Docker Image
+name: Build Docker and Release
 
 on:
   push:
@@ -7,20 +7,23 @@ on:
       - 'Dockerfile'
       - 'requirements.txt'
       - 'app.py'
-  pull_request:
-    branches: [ main ]
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       packages: write
 
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Set version
+        id: version
+        run: echo "VERSION=v1.${GITHUB_RUN_NUMBER}" >> $GITHUB_OUTPUT
 
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
@@ -40,9 +43,21 @@ jobs:
           platforms: linux/amd64,linux/arm64
           tags: |
             ghcr.io/${{ github.repository_owner }}/pyws:latest
-          labels: |
-            org.opencontainers.image.source=https://github.com/${{ github.repository }}
-            org.opencontainers.image.description=HTTP Server
-            org.opencontainers.image.licenses=GPL
+            ghcr.io/${{ github.repository_owner }}/pyws:${{ steps.version.outputs.VERSION }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Create source archive
+        run: |
+          mkdir release
+          zip -r release/python-ws-${{ steps.version.outputs.VERSION }}.zip . \
+          -x ".git/*" ".github/*"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.VERSION }}
+          name: python-ws ${{ steps.version.outputs.VERSION }}
+          files: release/*.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
