@@ -23,7 +23,7 @@ DOMAIN = os.environ.get('DOMAIN', '')                # 项目分配的域名或�
 SUB_PATH = os.environ.get('SUB_PATH', 'sub')         # 节点订阅token [cite: 1, 2]
 NAME = os.environ.get('NAME', '')                    # 节点名称 [cite: 2]
 WSPATH = os.environ.get('WSPATH', UUID[:8])          # 节点路径 [cite: 2]
-PORT = int(os.environ.get('SERVER_PORT') or os.environ.get('PORT') or 3000)  # [cite: 2]
+PORT = int(os.environ.get('SERVER_PORT') or os.environ.get('PORT') or 27001)  # [cite: 2]
 AUTO_ACCESS = os.environ.get('AUTO_ACCESS', '').lower() == 'true' # [cite: 2]
 DEBUG = os.environ.get('DEBUG', '').lower() == 'true' # [cite: 2]
 
