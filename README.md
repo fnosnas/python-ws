@@ -1,16 +1,13 @@
 <div align="center">
 
 # Python-ws
-基于python serverless实现的vless+trojan+shadowsocks三协议，轻量，无内核。
-
----
 
 Telegram交流反馈群组：https://t.me/eooceu
 
 </div>
 
 
-* 用于python环境的玩具和容器，vless+trojan+shadowsocks三协议，集成komari探针服务，可自行添加环境变量开启
+* 用于python环境的玩具和容器，集成komari探针服务，可自行添加环境变量开启
 
 * PaaS 平台设置的环境变量
   | 变量名        | 是否必须 | 默认值 | 备注 |
