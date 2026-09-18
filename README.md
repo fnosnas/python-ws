@@ -10,7 +10,7 @@ Telegram交流反馈群组：https://t.me/eooceu
 </div>
 
 
-* 用于python环境的玩具和容器，vless+trojan+shadowsocks三协议，集成哪吒探针服务(v0或v1)，可自行添加环境变量开启
+* 用于python环境的玩具和容器，vless+trojan+shadowsocks三协议，集成komari探针服务，可自行添加环境变量开启
 
 * PaaS 平台设置的环境变量
   | 变量名        | 是否必须 | 默认值 | 备注 |
